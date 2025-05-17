@@ -1,0 +1,92 @@
+---
+import "@/styles/globals.css";
+import LinkLayout from "../layouts/LinkLayout.astro";
+import { ProfileSection } from "@/components/ProfileSection";
+import { SocialLinks, socialIcons } from "@/components/SocialLinks";
+import { LinkCard } from "@/components/LinkCard";
+import { LinkContainer } from "@/components/LinkContainer";
+import { Footer } from "@/components/Footer";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
+const profileData = {
+  name: "Steven Pratt",
+  title: "Software Engineer & Maker",
+  description:
+    "Building performant & accessible applications with TypeScript and React. Currently working at the Royal Automobile Association & volunteering with Makerspace Adelaide.",
+  avatarSrc: "/ProfilePicture.png",
+};
+
+const socialLinks = [
+  {
+    name: "Twitter",
+    href: "https://x.com/Steveful21",
+    icon: socialIcons.twitter,
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/Steven-MP",
+    icon: socialIcons.github,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/steven-m-pratt/",
+    icon: socialIcons.linkedin,
+  },
+  { name: "YouTube", href: "https://youtube.com", icon: socialIcons.youtube },
+];
+
+const links = [
+  {
+    title: "Portfolio",
+    description:
+      "For all things dev and IOT related, check out my site, projects and blog",
+    href: "https://steven-pratt.dev",
+  },
+  {
+    title: "Workshop",
+    description: "For all my non-digital creations, check out my workshop site",
+    href: "https://steves-work.shop",
+  },
+  {
+    title: "LinkedIn",
+    description:
+      "Want to chat about work or just want to say hi? Check out my LinkedIn profile",
+    href: "https://www.linkedin.com/in/steven-m-pratt/",
+  },
+  {
+    title: "YouTube",
+    description: "Subscribe to my YouTube channel for a range of content",
+    href: "https://youtube.com/",
+  },
+];
+---
+
+<LinkLayout title={`${profileData.name} | Links`}>
+  <ThemeToggle client:load />
+
+  <div class="animate-fade-in space-y-8 py-8">
+    <ProfileSection
+      client:load
+      name={profileData.name}
+      title={profileData.title}
+      description={profileData.description}
+      avatarSrc={profileData.avatarSrc}
+    />
+
+    <SocialLinks links={socialLinks} />
+
+    <LinkContainer>
+      {
+        links.map((link) => (
+          <LinkCard
+            title={link.title}
+            description={link.description}
+            href={link.href}
+          />
+        ))
+      }
+    </LinkContainer>
+  </div>
+
+  <Footer />
+</LinkLayout>

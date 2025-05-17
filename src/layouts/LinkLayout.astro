@@ -1,0 +1,23 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title,
+  description = "Personal link site",
+  image = "/images/og-image.jpg", 
+} = Astro.props;
+---
+
+<Layout title={title}>
+  <div class="min-h-screen flex flex-col px-4 py-10 md:py-16">
+    <main class="flex-grow container max-w-2xl mx-auto">
+      <slot />
+    </main>
+  </div>
+</Layout>
