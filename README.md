@@ -17,6 +17,8 @@
 
 > A simple link-in-bio style site built with Astro and utilisising shadcn components.
 
+<img alt="Screenshot of site" src="./public/readmeBannerImage.png" />
+
 ### [See it live](links.steven-pratt.com)
 
 ## Install
